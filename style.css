@@ -52,7 +52,21 @@ button:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: background 0.3s ease, color 0.3s ease;
+    overflow: hidden;
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: break-word;
 }
+
+/* Media query pour les petits écrans */
+@media (max-width: 600px) {
+    .flashcard {
+        width: 90%; /* Réduit la largeur à 90% de l'écran */
+        font-size: 18px; /* Réduit la taille de la police */
+        padding: 15px; /* Réduit le padding */
+    }
+}
+
 .navigation {
     display: flex;
     justify-content: center;
