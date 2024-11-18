@@ -30,6 +30,8 @@ textarea {
     margin-bottom: 20px;
     resize: none;
     box-sizing: border-box;
+    white-space: nowrap; 
+    overflow-x: scroll;  
 }
 
 button {
