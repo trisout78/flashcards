@@ -55,6 +55,7 @@ try {
         const flashcards = <?php echo json_encode($flashcards); ?>;
         let currentCardIndex = 0;
         let showTermFirst = true;
+        let keyPressed = false;
 
         function displayCard() {
             const flashcardElement = document.getElementById('flashcard');
@@ -110,6 +111,38 @@ try {
             const progress = ((currentCardIndex + 1) / flashcards.length) * 100;
             document.getElementById('progressBar').style.width = `${progress}%`;
         }
+
+        function handleKeyDown(event) {
+            if (keyPressed) return;
+            keyPressed = true;
+            switch (event.key) {
+                case 'ArrowLeft':
+                    prevCard();
+                    break;
+                case 'ArrowRight':
+                    nextCard();
+                    break;
+                case ' ':
+                case 'Enter':
+                    const flashcardElement = document.getElementById('flashcard');
+                    const card = flashcards[currentCardIndex];
+                    if (flashcardElement.textContent === card.term) {
+                        flashcardElement.textContent = card.definition;
+                        flashcardElement.classList.add('answer');
+                    } else {
+                        flashcardElement.textContent = card.term;
+                        flashcardElement.classList.remove('answer');
+                    }
+                    break;
+            }
+        }
+
+        function handleKeyUp() {
+            keyPressed = false;
+        }
+
+        document.addEventListener('keydown', handleKeyDown);
+        document.addEventListener('keyup', handleKeyUp);
 
         displayCard();
     </script>
