@@ -58,12 +58,12 @@ button:hover {
     word-break: break-word;
 }
 
-/* Media query pour les petits écrans */
+
 @media (max-width: 600px) {
     .flashcard {
-        width: 90%; /* Réduit la largeur à 90% de l'écran */
-        font-size: 18px; /* Réduit la taille de la police */
-        padding: 15px; /* Réduit le padding */
+        width: 90%; 
+        font-size: 18px; 
+        padding: 15px; 
     }
 }
 
@@ -85,4 +85,7 @@ button:hover {
     width: 0%;
     background: #ff7eb3;
     transition: width 0.3s ease;
+}
+.flashcard.answer {
+    background: #fff5e6;
 }
