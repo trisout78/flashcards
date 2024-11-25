@@ -59,18 +59,22 @@ try {
         function displayCard() {
             const flashcardElement = document.getElementById('flashcard');
             const card = flashcards[currentCardIndex];
+            flashcardElement.classList.remove('answer');
 
             if (showTermFirst) {
                 flashcardElement.textContent = card.term;
             } else {
                 flashcardElement.textContent = card.definition;
+                flashcardElement.classList.add('answer');
             }
 
             flashcardElement.onclick = () => {
                 if (flashcardElement.textContent === card.term) {
                     flashcardElement.textContent = card.definition;
+                    flashcardElement.classList.add('answer');
                 } else {
                     flashcardElement.textContent = card.term;
+                    flashcardElement.classList.remove('answer');
                 }
             };
         }
