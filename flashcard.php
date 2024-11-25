@@ -45,6 +45,7 @@ try {
         <div class="navigation">
             <button onclick="shuffleCards()">🔀 Mélanger</button>
             <button onclick="toggleDirection()">🔄 Changer le sens</button>
+            <button onclick="toggleRandomDirection()">🔀 Sens aléatoire</button>
         </div>
         <div class="progress-bar-container">
             <div class="progress-bar" id="progressBar"></div>
@@ -55,12 +56,17 @@ try {
         const flashcards = <?php echo json_encode($flashcards); ?>;
         let currentCardIndex = 0;
         let showTermFirst = true;
+        let randomDirection = false;
         let keyPressed = false;
 
         function displayCard() {
             const flashcardElement = document.getElementById('flashcard');
             const card = flashcards[currentCardIndex];
             flashcardElement.classList.remove('answer');
+
+            if (randomDirection) {
+                showTermFirst = Math.random() >= 0.5;
+            }
 
             if (showTermFirst) {
                 flashcardElement.textContent = card.term;
@@ -104,6 +110,16 @@ try {
 
         function toggleDirection() {
             showTermFirst = !showTermFirst;
+            displayCard();
+        }
+
+        function toggleRandomDirection() {
+            randomDirection = !randomDirection;
+            if (randomDirection) {
+                document.querySelector("button[onclick='toggleRandomDirection()']").classList.add('active');
+            } else {
+                document.querySelector("button[onclick='toggleRandomDirection()']").classList.remove('active');
+            }
             displayCard();
         }
 
