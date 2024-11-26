@@ -162,5 +162,8 @@ try {
 
         displayCard();
     </script>
+    <footer class="footer">
+        Made with ❤️ by Trisout (Tristan)
+    </footer>
 </body>
 </html>
