@@ -91,3 +91,13 @@ button.active {
 .flashcard.answer {
     background: #fff5e6;
 }
+.footer {
+    text-align: center;
+    font-size: small;
+    margin-top: 20px;
+    color: white;
+    font-family: Arial, sans-serif;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+}
