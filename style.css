@@ -101,3 +101,47 @@ button.active {
     padding: 10px;
     border-radius: 5px;
 }
+.input-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin: 20px 0;
+}
+
+#userInput {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    width: 60%;
+    max-width: 400px;
+    transition: all 0.3s ease;
+}
+
+#userInput:focus {
+    outline: none;
+    border-color: #ff7eb3;
+    box-shadow: 0 0 5px rgba(255, 126, 179, 0.5);
+}
+
+@media (max-width: 600px) {
+    .input-group {
+        flex-direction: column;
+    }
+    
+    #userInput {
+        width: 90%;
+    }
+    
+    .input-group button {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+.training-button {
+    text-decoration: none;
+}

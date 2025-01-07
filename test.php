@@ -30,14 +30,22 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flashcards Interactives</title>
+    <title>Test de Flashcards</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .correct { color: green; }
+        .incorrect { color: red; }
+    </style>
 </head>
 <body>
     <div class="container" id="flashcardsContainer">
-        <h1>Flashcards Interactives</h1>
+        <h1>Test de Flashcards</h1>
         <h2>Vos Flashcards</h2>
         <div class="flashcard" id="flashcard"></div>
+        <div class="input-group">
+            <input type="text" id="userInput" placeholder="Votre réponse">
+            <button onclick="checkAnswer()">Valider</button>
+        </div>
         <div class="navigation">
             <button onclick="prevCard()">⬅️ Précédent</button>
             <button onclick="nextCard()">Suivant ➡️</button>
@@ -46,11 +54,6 @@ try {
             <button onclick="shuffleCards()">🔀 Mélanger</button>
             <button onclick="toggleDirection()">🔄 Changer le sens</button>
             <button onclick="toggleRandomDirection()">🔀 Sens aléatoire</button>
-        </div>
-        <div class="navigation">
-            <a href="test.php?id=<?php echo $id; ?>" class="training-button">
-                <button>📝 S'entraîner</button>
-            </a>
         </div>
         <div class="progress-bar-container">
             <div class="progress-bar" id="progressBar"></div>
@@ -62,7 +65,6 @@ try {
         let currentCardIndex = 0;
         let showTermFirst = true;
         let randomDirection = false;
-        let keyPressed = false;
 
         function displayCard() {
             const flashcardElement = document.getElementById('flashcard');
@@ -79,16 +81,6 @@ try {
                 flashcardElement.textContent = card.definition;
                 flashcardElement.classList.add('answer');
             }
-
-            flashcardElement.onclick = () => {
-                if (flashcardElement.textContent === card.term) {
-                    flashcardElement.textContent = card.definition;
-                    flashcardElement.classList.add('answer');
-                } else {
-                    flashcardElement.textContent = card.term;
-                    flashcardElement.classList.remove('answer');
-                }
-            };
         }
 
         function prevCard() {
@@ -133,37 +125,31 @@ try {
             document.getElementById('progressBar').style.width = `${progress}%`;
         }
 
-        function handleKeyDown(event) {
-            if (keyPressed) return;
-            keyPressed = true;
-            switch (event.key) {
-                case 'ArrowLeft':
-                    prevCard();
-                    break;
-                case 'ArrowRight':
-                    nextCard();
-                    break;
-                case ' ':
-                case 'Enter':
-                    const flashcardElement = document.getElementById('flashcard');
-                    const card = flashcards[currentCardIndex];
-                    if (flashcardElement.textContent === card.term) {
-                        flashcardElement.textContent = card.definition;
-                        flashcardElement.classList.add('answer');
-                    } else {
-                        flashcardElement.textContent = card.term;
-                        flashcardElement.classList.remove('answer');
-                    }
-                    break;
+        function checkAnswer() {
+            const userInput = document.getElementById('userInput').value.trim();
+            const flashcardElement = document.getElementById('flashcard');
+            const card = flashcards[currentCardIndex];
+            const correctAnswer = showTermFirst ? card.definition : card.term;
+            const result = compareAnswers(userInput, correctAnswer);
+            flashcardElement.innerHTML = result;
+        }
+
+        function compareAnswers(userInput, correctAnswer) {
+            userInput = userInput.toLowerCase();
+            correctAnswer = correctAnswer.toLowerCase();
+            let result = '';
+
+            for (let i = 0; i < correctAnswer.length; i++) {
+                let char = correctAnswer[i] === ' ' ? '&nbsp;' : correctAnswer[i];
+                if (i < userInput.length && userInput[i] === correctAnswer[i]) {
+                    result += `<span class="correct">${char}</span>`;
+                } else {
+                    result += `<span class="incorrect">${char}</span>`;
+                }
             }
-        }
 
-        function handleKeyUp() {
-            keyPressed = false;
+            return result;
         }
-
-        document.addEventListener('keydown', handleKeyDown);
-        document.addEventListener('keyup', handleKeyUp);
 
         displayCard();
     </script>
