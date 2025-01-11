@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Créez gratuitement vos flashcards interactives pour un apprentissage efficace. Partagez facilement vos cartes mémoire pour réviser et apprendre.">
-    <meta name="keywords" content="flashcards, cartes mémoire, apprentissage, révisions, éducation, mémorisation">
+    <meta name="keywords" content="flashcards, cartes mémoire, apprentissage, révisions, éducation, mémorisation, Trisout, Trisout Flashcards">
     <meta name="author" content="Flashcards Interactives">
     <meta name="robots" content="index, follow">
     
