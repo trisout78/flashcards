@@ -99,6 +99,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <textarea name="flashcards" placeholder="Exemple : Bonjour = Hello" required></textarea>
             <button type="submit">Enregistrer</button>
         </form>
+        <div class="new-version">
+            <h2>Découvrez notre nouvelle version du site, basée sur digiflashcards !</h2>
+            <p>Testez les toutes dernières fonctionnalités et profitez d'une expérience améliorée. Ne manquez pas cette opportunité de rendre votre apprentissage encore plus interactif et efficace.</p>
+            <button onclick="window.location.href='/new'">Tester maintenant</button>
+        </div>
     </div>
     <script>
         function copyLink() {
