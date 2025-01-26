@@ -94,6 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="container">
         <h1>Créer des Flashcards</h1>
+        <p>1 carte par ligne.</p>
         <?php if (isset($message)) echo "<p>$message</p>"; ?>
         <form method="POST" action="index.php">
             <textarea name="flashcards" placeholder="Exemple : Bonjour = Hello" required></textarea>
