@@ -70,8 +70,7 @@ Les contributions sont les bienvenues ! Si vous avez des suggestions ou des amé
 
 ## Licence
 
-Ce projet est sous licence GNU GPLv3. Voir le fichier [GNU General Public License v3.0](LICENSE) pour plus de détails.
-
+Ce projet est sous licence [GNU General Public License v3.0](LICENSE)
 ## Auteur
 
 Made with ❤️ by Trisout (Tristan)
