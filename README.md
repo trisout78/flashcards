@@ -75,7 +75,3 @@ Ce projet est sous licence GNU GPLv3. Voir le fichier [GNU General Public Licens
 ## Auteur
 
 Made with ❤️ by Trisout (Tristan)
-
----
-
-Merci d'avoir utilisé **Flashcards Interactives**! Bon apprentissage !
